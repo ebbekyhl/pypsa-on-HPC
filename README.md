@@ -77,13 +77,13 @@ PyPSA-Eur can have some heavy I/O operations during the solving stage which can 
 This can be overcome by ensuring that temporary files are saved to the temporary storage, which is much faster.
 First, change the following configuration in the config file to:
 ```
-use\_shadow\_directory: true
+use_shadow_directory: true
 ```
   
 Second, change this in the config file:
 
 ```
-solver\_dir: $TMPDIR
+solver_dir: $TMPDIR
 ```
 See more here: https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-practice/#stage-via-tmpdir
 
@@ -95,7 +95,7 @@ See more here: https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-prac
 #PBS -l select=1:ncpus=2:mem=4gb
 #PBS -N pypsa-eur
 
-cd $PBS\_O\_WORKDIR
+cd $PBS_O_WORKDIR
 
 source ~/miniforge3/etc/profile.d/conda.sh
 
