@@ -114,7 +114,14 @@ snakemake -call all --configfile config/test/config.overnight.yaml -j 10
 #### **Logs**
 Debugging your code?
 * all logs are found in the folder "logs/<jobname>" or in the hidden folder "./snakemake/log/"
-  
+
+#### **Attach manually to a computation node**
+Let's say you want to run a python script or a jupyter notebook on a computation node in an interactive window 
+(without submiting a job with a .bash file), you can use the following command (allocating core,s memory, and walltime):
+```
+qsub -I -l select=1:ncpus=4:mem=8gb -l walltime=00:30:00
+```
+
 #### **Useful commands:**
 
 * Show all jobs running on the HPC:
