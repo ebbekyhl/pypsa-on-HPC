@@ -122,6 +122,24 @@ Let's say you want to run a python script or a jupyter notebook on a computation
 qsub -I -l select=1:ncpus=4:mem=8gb -l walltime=00:30:00
 ```
 
+Then, when mounted to a computation node, you have to load conda:
+```
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+```
+
+And then activate your work environment:
+
+```
+conda activate pypsa-eur
+```
+
+To run a jupyter server, run the following (make sure that jupyter is installed in the conda environment:
+```
+jupyter notebook --no-browser --ip=0.0.0.0 --port=8888
+```
+
+You can access the jupyter notebook with an SSH tunnel (e.g., by using [MobaXterm](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/getting-started/using-ssh/#mobaxterm)).
+
 #### **Useful commands:**
 
 * Show all jobs running on the HPC:
@@ -138,3 +156,4 @@ qsub -I -l select=1:ncpus=4:mem=8gb -l walltime=00:30:00
 ```
 [user@login ~]$ qdel 403120.pbs-7
 ```
+if 403120.pbs-7 was the jobname.
