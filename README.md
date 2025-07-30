@@ -72,6 +72,11 @@ home directory. NB: You only need to do this step once.
 * For large models, gurobi might be necessary to use instead of Highs to obtain convergence.
 * To install gurobi, follow the instructions given [here](https://support.gurobi.com/hc/en-us/articles/4534161999889-How-do-I-install-Gurobi-Optimizer)
 
+Create a gurobi.lic file and save it to the /rds/general/user/username/home/ folder. You will need to add a path such that the gurobi solver uses this license:
+```
+export GRB_LICENSE_FILE=/rds/general/user/username/home/gurobi.lic
+```
+
 #### **Important feature to avoid overloading the HPC with heavy I/O operations:**
 
 PyPSA-Eur can have some heavy I/O operations during the solving stage which can slow things down. 
@@ -94,9 +99,9 @@ Read more [here](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-pr
 * First create a bash file:
 ```
 #!/bin/bash
-#PBS -l walltime=01:00:00
-#PBS -l select=1:ncpus=2:mem=4gb
-#PBS -N pypsa-eur
+#PBS -l walltime=24:00:00
+#PBS -l select=1:ncpus=2:mem=100gb
+#PBS -N pypsa-UK
 
 cd $PBS_O_WORKDIR
 
@@ -104,11 +109,15 @@ source ~/miniforge3/etc/profile.d/conda.sh
 
 conda activate pypsa-eur
 
-snakemake -call all --configfile config/test/config.overnight.yaml -j 10
-```
+export GRB_LICENSE_FILE=/rds/general/user/username/home/gurobi.lic
 
+echo "TMPDIR: $TMPDIR"
+
+snakemake -call all --configfile config/config.yaml -j 5
+```
+* Adjust settings where relevant (e.g., walltime and memory, name of job, etc.)
 * Save this file as "job.sh"
-* Then submit the job as:
+* Then submit the job with the command:
 
 ```
 [user@login pypsa-eur]$ qsub job.sh
