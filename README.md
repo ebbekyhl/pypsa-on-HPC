@@ -76,15 +76,17 @@ home directory. NB: You only need to do this step once.
 
 PyPSA-Eur can have some heavy I/O operations during the solving stage which can slow things down. 
 This can be overcome by ensuring that temporary files are saved to the temporary storage, which is much faster.
-First, change the following configuration in the config file to:
+First, add the following line to the job.sh file:
 ```
-use_shadow_directory: true
+echo "TMPDIR: $TMPDIR"
 ```
   
-Second, change this in the config file:
+Second, add a path to the temporary directory in the **solve_network** function in the `solve_network.py` file:
 
 ```
-solver_dir: $TMPDIR
+model_kwargs = cf_solving.get("model_kwargs", {})
+model_kwargs["solver_dir"] = os.environ.get('TMPDIR')
+kwargs["model_kwargs"] = model_kwargs
 ```
 See more here: https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-practice/#stage-via-tmpdir
 
