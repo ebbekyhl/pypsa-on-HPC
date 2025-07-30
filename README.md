@@ -2,14 +2,14 @@
 By Ebbe Kyhl Goetske, Research Associate @ ICL
 
 This is a short guide on how to install and run PyPSA-Eur on the HPC at ICL.
-For general instructions on how to use the HPC, see https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/getting-started/.
+For general information on how to use the HPC, read the instructions [here](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/getting-started/).
 
 #### **For your convenience - Use WinSCP as file explorer:**
 
 If you use Windows, you can install WinSCP and use this to explore your files located on the HPC.
 Here, you can also easily transfer data from your local computer to the HPC - but be careful with large files.
 For large files (more than a few GBs), you need to submit a job to the batch queue.
-* Download WinSCP from https://winscp.net/eng/index.php
+* Download WinSCP [here](https://winscp.net/eng/index.php)
 * Login with "login.cx3.hpc.imperial.ac.uk" as hostname, then your username and password as your imperial login
 
 #### **Connect to HPC:**
@@ -70,7 +70,7 @@ home directory. NB: You only need to do this step once.
 #### **Choose solver:**
 * Highs is the open-source choice. It is installed together with PyPSA-Eur.
 * For large models, gurobi might be necessary to use instead of Highs to obtain convergence.
-* To install gurobi, follow the instructions given here: https://github.com/martavp/pypsa-in-genomedk
+* To install gurobi, follow the instructions given [here](https://support.gurobi.com/hc/en-us/articles/4534161999889-How-do-I-install-Gurobi-Optimizer)
 
 #### **Important feature to avoid overloading the HPC with heavy I/O operations:**
 
@@ -88,7 +88,7 @@ model_kwargs = cf_solving.get("model_kwargs", {})
 model_kwargs["solver_dir"] = os.environ.get('TMPDIR')
 kwargs["model_kwargs"] = model_kwargs
 ```
-See more here: https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-practice/#stage-via-tmpdir
+Read more [here](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/best-practice/#stage-via-tmpdir).
 
 #### **Submitting your first job to the HPC:**
 * First create a bash file:
@@ -159,4 +159,4 @@ You can access the jupyter notebook with an SSH tunnel (e.g., by using [MobaXter
 ```
 [user@login ~]$ qdel 403120.pbs-7
 ```
-if 403120.pbs-7 was the jobname.
+if *403120.pbs-7* was the jobname.
