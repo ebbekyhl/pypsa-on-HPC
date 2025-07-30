@@ -63,7 +63,8 @@ home directory. NB: You only need to do this step once.
 #### **For your convenience - Text editor in VS Code:**
 
 * Work on your code in a text editor - I recommend VS Code
-* From VS Code, you can access the HPC directly: Hit the blue bottom-left button to "Open a Remote Window"
+* Install extension "Remote - SSH" in VS Code.
+* Now you can access the HPC directly: Hit the blue bottom-left button to "Open a Remote Window" or the "Remote Explorer" on the left.
 * Choose "SSH", then sign in as described above
 
 #### **Choose solver:**
