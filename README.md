@@ -123,6 +123,8 @@ snakemake -call all --configfile config/config.yaml -j 5
 [user@login pypsa-eur]$ qsub job.sh
 ```
 
+If you are running a myopic pathway optimization and you are limited by the available wall time (e.g., 72 hours), you may need to restart the job while ensuring that it continues from where it left. To do this, you can add the "--rerun-triggers mtime" tag which ensures that all successfully solved years are not run again.
+
 #### **Logs**
 Debugging your code?
 * all logs are found in the folder "logs/<jobname>" or in the hidden folder "./snakemake/log/"
