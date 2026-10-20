@@ -1,5 +1,4 @@
 # **PyPSA-Eur on HPC at ICL**
-By Ebbe Kyhl Goetske, Research Associate @ ICL
 
 This is a short guide on how to install and run PyPSA-Eur on the HPC at ICL.
 For general information on how to use the HPC, read the instructions [here](https://icl-rcs-user-guide.readthedocs.io/en/latest/hpc/getting-started/).
